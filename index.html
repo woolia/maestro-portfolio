@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Maestro — AI 멀티에이전트 오케스트레이터</title>
+  <meta name="description" content="Maestro — 혼자 운영하는 AI 멀티에이전트 오케스트레이터. 역할별 자리, 작업 큐, 파일 샌드박스를 직접 설계·구현했습니다." />
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
+  />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+  <!-- ======================= HEADER ======================= -->
+  <header class="header" id="site-header">
+    <div class="header-inner">
+      <a href="#hero" class="logo" aria-label="Maestro 홈">Maestro</a>
+
+      <button
+        type="button"
+        class="hamburger-btn"
+        id="hamburger-btn"
+        aria-label="메뉴 열기"
+        aria-expanded="false"
+        aria-controls="nav-links"
+      >
+        <svg class="icon-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <svg class="icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <nav aria-label="주 메뉴">
+        <ul class="nav-links" id="nav-links">
+          <li><a class="nav-link" href="#hero">Hero</a></li>
+          <li><a class="nav-link" href="#problem">Problem</a></li>
+          <li><a class="nav-link" href="#maestro">Maestro</a></li>
+          <li><a class="nav-link" href="#evidence">Evidence</a></li>
+          <li><a class="nav-link" href="#decisions">Decisions</a></li>
+          <li><a class="nav-link" href="#changelog">Changelog</a></li>
+          <li><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ======================= §1 HERO ======================= -->
+    <section id="hero" class="section section-hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1 id="hero-title" class="hero-title">
+            AI 에이전트 팀을<br />직접 설계했습니다.
+          </h1>
+          <p class="hero-sub">
+            Maestro — 혼자 운영하는 AI 멀티에이전트 오케스트레이터.
+            역할별 자리, 작업 큐, 파일 샌드박스를 직접 설계·구현했습니다.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#evidence">실 사용 사례 보기 →</a>
+            <a class="btn btn-ghost" href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </div>
+
+        <div class="hero-media" aria-hidden="true">
+          <div class="placeholder placeholder-16-10">
+            <span>캡처 준비 중</span>
+            <small>Maestro 메인 화면</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-hint" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ======================= §2 PROBLEM ======================= -->
+    <section id="problem" class="section section-alt" aria-labelledby="problem-title">
+      <div class="container">
+        <h2 id="problem-title" class="section-title">
+          하나의 AI 창에서 모든 작업을 하면<br />왜 망가지는가
+        </h2>
+
+        <div class="prose">
+          <p>일반 AI 채팅 도구로 복잡한 프로젝트를 진행하면 두 가지 문제가 반복됩니다.</p>
+          <p>
+            <strong>첫째, 컨텍스트 오염.</strong>
+            PM 지시, 개발 코드, QA 결과가 하나의 긴 대화에 섞이면
+            AI는 앞 내용을 잊거나 엉뚱한 이전 맥락을 가져옵니다.
+          </p>
+          <p>
+            <strong>둘째, 책임 없는 협업.</strong>
+            "누가 무엇을 했고 왜 그 결정을 했는지"가 기록되지 않으면
+            다음 작업에서 처음부터 다시 파악해야 합니다.
+          </p>
+          <p>
+            LangChain·AutoGen 같은 프레임워크는 코드로 파이프라인을 짜야 해서
+            새 프로젝트마다 오케스트레이션 코드를 다시 작성합니다.
+          </p>
+          <p>
+            Maestro는 이 두 문제를 역할 분리(자리) + 구조화 메시지(큐) + 파일 격리(샌드박스)로 풉니다.
+          </p>
+        </div>
+
+        <div class="problem-cards">
+          <article class="problem-card">
+            <div class="problem-card-head">
+              <span class="problem-card-mark" aria-hidden="true">⚠</span>
+              <h3 class="problem-card-title">컨텍스트 오염</h3>
+            </div>
+            <p>PM 지시·코드·QA 결과가 하나의 대화에 섞여 AI가 이전 맥락을 잃거나 오용합니다.</p>
+          </article>
+          <article class="problem-card">
+            <div class="problem-card-head">
+              <span class="problem-card-mark" aria-hidden="true">⚠</span>
+              <h3 class="problem-card-title">책임 없는 협업</h3>
+            </div>
+            <p>누가 무엇을 왜 결정했는지 기록이 없어 다음 작업에서 매번 처음부터 재파악합니다.</p>
+          </article>
+        </div>
+
+        <blockquote class="blockquote">
+          <p>[개인 동기 삽입 위치]</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ======================= §3 WHAT IS MAESTRO ======================= -->
+    <section id="maestro" class="section" aria-labelledby="maestro-title">
+      <div class="container">
+        <h2 id="maestro-title" class="section-title">
+          AI 팀 운영에 필요한 모든 것을 직접 설계했습니다
+        </h2>
+
+        <div class="feature-cards">
+
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">🪑</span>
+            <h3 class="card-title">자리(Seat)</h3>
+            <p class="card-sub">역할별 에이전트 슬롯</p>
+            <p class="card-desc">
+              PM · Ace · 연구자 · 기획자 · 개발자 · QA · DevOps · 비서.
+              각 자리는 독립 세션 — 컨텍스트 오염 없이 역할에만 집중합니다.
+            </p>
+            <div class="table-wrap">
+              <table class="role-table">
+                <thead>
+                  <tr><th scope="col">자리</th><th scope="col">역할</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>PM</td><td>작업 배분·진행 관리 전담</td></tr>
+                  <tr><td>Ace</td><td>사용자와 직접 대화하는 대표 창구</td></tr>
+                  <tr><td>researcher</td><td>조사·분석 전문</td></tr>
+                  <tr><td>spec-writer</td><td>기획서·요구사항 작성</td></tr>
+                  <tr><td>uiux</td><td>UI/UX 디자인</td></tr>
+                  <tr><td>lead-developer</td><td>아키텍처·리드 개발</td></tr>
+                  <tr><td>developer</td><td>구현</td></tr>
+                  <tr><td>qa</td><td>테스트·검증</td></tr>
+                  <tr><td>devops</td><td>인프라·배포</td></tr>
+                  <tr><td>assistant</td><td>조직 알림·팀 구성 제안</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">📋</span>
+            <h3 class="card-title">작업 큐(Queue)</h3>
+            <p class="card-sub">에이전트 간 구조화 협업</p>
+            <p class="card-desc">
+              에이전트끼리 채팅하지 않습니다. PM이 큐로 작업 카드를 보내고,
+              자리는 착수·완료·막힘을 큐에 기록합니다. 근거·가정·미확인 사항이 항상 남습니다.
+            </p>
+            <ul class="mono-list">
+              <li><code>queue_assign</code> — PM이 특정 자리에 작업 카드 생성</li>
+              <li><code>queue_update</code> — in_progress / done / blocked 전환</li>
+              <li><code>queue_withdraw</code> — 진행 중인 작업 즉시 회수</li>
+              <li><code>queue_list</code> — 팀 작업 목록 조회</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">🗂</span>
+            <h3 class="card-title">파일 샌드박스</h3>
+            <p class="card-sub">자리별 쓰기 격리</p>
+            <p class="card-desc">
+              각 자리는 자기 폴더(<code>_seats/&lt;자리&gt;/</code>)에만 쓸 수 있습니다.
+              다른 자리 파일은 읽기·복사만 가능 — 수정·삭제는 앱이 거부합니다.
+              동시 수정 충돌을 구조적으로 차단합니다.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">📖</span>
+            <h3 class="card-title">플레이북(Playbook)</h3>
+            <p class="card-sub">반복 작업의 표준화</p>
+            <p class="card-desc">
+              Ace가 샘플 작업을 완성하면 재현 가능한 절차를 문서화합니다.
+              PM이 플레이북을 읽고 여러 자리에 배분하면 같은 품질로 반복 실행됩니다.
+            </p>
+            <p class="card-meta">
+              포함: 요청 원문 · 확정 결정 · 샘플 경로 · 절차·스크립트 · 가변 값 · 검수 체크리스트
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">💾</span>
+            <h3 class="card-title">기억·로깅</h3>
+            <p class="card-sub">세션을 넘나드는 컨텍스트</p>
+            <p class="card-desc">
+              모든 메시지·도구 호출·결과가 JSONL로 기록됩니다.
+              세션이 새로 시작돼도 지난 결정·이슈를 검색할 수 있습니다.
+            </p>
+            <p class="card-meta">
+              기록 필드: <code>id</code> · <code>seatId</code> · <code>at</code> · <code>kind</code> · <code>text</code>
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= §4 LIVE EVIDENCE ======================= -->
+    <section id="evidence" class="section section-alt" aria-labelledby="evidence-title">
+      <div class="container">
+        <h2 id="evidence-title" class="section-title">
+          Maestro로 게임을 만들었습니다 — 기획부터 QA까지
+        </h2>
+        <p class="section-sub">
+          관전형 추첨 게임 (2026-10-14)<br />
+          PM · Ace · 기획자 · UI/UX · 리드 개발자 · 개발자 · QA · DevOps<br />
+          — 8개 자리가 큐를 통해 협업
+        </p>
+
+        <ol class="timeline" aria-label="관전형 추첨 게임 진행 흐름">
+          <li class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-step-num">단계 1</div>
+            <div class="timeline-content">PM → 스펙 문서·와이어프레임·물리 엔진 PoC를 각 자리에 배분</div>
+            <span class="badge">PM</span>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-step-num">단계 2</div>
+            <div class="timeline-content">spec-writer → 기능 요구사항 23개 작성 → PM 완료 검증</div>
+            <span class="badge">spec-writer</span>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-step-num">단계 3</div>
+            <div class="timeline-content">uiux → 3개 화면 ASCII 와이어프레임 작성</div>
+            <span class="badge">uiux</span>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-step-num">단계 4</div>
+            <div class="timeline-content">Ace → 캐릭터 선택 화면 · 8개 직업 전투 특성 · 직업별 스킬 구현</div>
+            <span class="badge">Ace</span>
+          </li>
+          <li class="timeline-item timeline-item--highlight">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-step-num">단계 5 · 강조</div>
+            <div class="timeline-content">QA → <code>simClassWinRate.js</code> 헤드리스 시뮬레이션으로 n=8/5/12 조건별 승률 검증</div>
+            <span class="badge badge-accent">QA</span>
+          </li>
+          <li class="timeline-item">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-step-num">단계 6</div>
+            <div class="timeline-content">밸런스 이상 클래스 발견 → developer → 수치 조정 → 빌드 통과 확인</div>
+            <span class="badge">developer</span>
+          </li>
+        </ol>
+
+        <aside class="callout">
+          <span class="callout-icon" aria-hidden="true">💡</span>
+          <p>
+            QA가 단순 체크리스트가 아닌 헤드리스 시뮬레이션 도구를 직접 실행해
+            클래스 밸런스를 정량 검증했습니다.
+          </p>
+        </aside>
+
+        <h3 class="h3-label">추가 사례</h3>
+        <div class="side-cases">
+          <article class="side-case">
+            <div class="side-case-icon" aria-hidden="true">📚</div>
+            <h4 class="side-case-title">자격증 문제풀기 웹앱</h4>
+            <p class="side-case-date">2026-10-23</p>
+            <p>정보처리기사·SQLD 수험생용. 팀 출범 당일 기획서 초안·출제범위 조사·샘플 문항 32개 완성.</p>
+          </article>
+          <article class="side-case">
+            <div class="side-case-icon" aria-hidden="true">🌐</div>
+            <h4 class="side-case-title">포트폴리오 웹사이트 (이 페이지)</h4>
+            <p class="side-case-date">2026-10-23</p>
+            <p>이 페이지 자체가 Maestro TF가 만든 결과물입니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= §5 DESIGN DECISIONS ======================= -->
+    <section id="decisions" class="section" aria-labelledby="decisions-title">
+      <div class="container">
+        <h2 id="decisions-title" class="section-title">
+          왜 프레임워크를 안 쓰고 직접 만들었는가
+        </h2>
+
+        <h3 class="h3-label">설계 결정</h3>
+        <div class="decision-cards">
+
+          <article class="card decision-card">
+            <div class="decision-num">결정 1</div>
+            <h4 class="decision-title">큐 기반 협업 (채팅 대신 카드)</h4>
+            <p>에이전트 간 자유 채팅 대신 구조화된 작업 카드를 선택했습니다.</p>
+            <p class="card-meta">이유</p>
+            <ul>
+              <li>채팅은 기록이 아니다 — 누가 언제 무엇을 결정했는지 추적 불가</li>
+              <li>작업 상태(in_progress / done / blocked)를 강제하면 진행 상황이 항상 명확</li>
+              <li>에이전트가 "기다리겠다고 말하고 턴을 끝내는" 패턴을 구조적으로 차단</li>
+            </ul>
+          </article>
+
+          <article class="card decision-card">
+            <div class="decision-num">결정 2</div>
+            <h4 class="decision-title">blocked_kind 7분류</h4>
+            <p>막힘 상태를 단순 실패가 아닌 7가지 원인으로 분류합니다:</p>
+            <ul class="mono-list">
+              <li><code>input_missing</code></li>
+              <li><code>permission</code></li>
+              <li><code>tool_missing</code></li>
+              <li><code>dependency</code></li>
+              <li><code>premise</code></li>
+              <li><code>question</code></li>
+              <li><code>external</code></li>
+            </ul>
+            <p class="card-meta">이유</p>
+            <ul>
+              <li>원인마다 해결 주체가 다르다 (사람 vs. 다른 에이전트 vs. 대기)</li>
+              <li><code>dependency</code>는 <code>depends_on</code>으로 대기 작업 ID 명시 — 해결되면 자동 재개</li>
+              <li><code>cause</code> 이름으로 같은 원인을 묶어 한 번에 해결</li>
+            </ul>
+          </article>
+
+          <article class="card decision-card">
+            <div class="decision-num">결정 3</div>
+            <h4 class="decision-title">파일 샌드박스</h4>
+            <p>공유 파일 시스템에서 여러 에이전트가 동시에 작업하면 충돌이 발생합니다.
+              자리별 쓰기 경로를 앱 레벨에서 강제 격리해 구조적으로 차단했습니다.</p>
+            <p class="card-meta">부작용</p>
+            <ul>
+              <li>협업을 위해 파일을 복사해야 하는 불편이 있지만,</li>
+              <li>충돌 디버깅보다 훨씬 비용이 낮다고 판단했습니다.</li>
+            </ul>
+          </article>
+
+        </div>
+
+        <h3 class="h3-label">이슈와 해결</h3>
+        <div class="issue-grid">
+          <article class="issue">
+            <div class="issue-label">[A] 작업 회수 불가</div>
+            <p><strong>상황</strong> — PM이 배분한 작업을 사용자가 취소하려 했으나 도구가 없었음</p>
+            <p><strong>해결</strong> — <code>queue_withdraw</code> 도구 추가. PM 규범에 "멈춰·중단" 신호 수신 시 열린 작업 전부 회수 명시</p>
+          </article>
+          <article class="issue">
+            <div class="issue-label">[B] 세션 만료 후 맥락 유실</div>
+            <p><strong>상황</strong> — 작업 완료 후 세션 초기화 → 다음 작업에서 이전 결정을 처음부터 재파악</p>
+            <p><strong>해결</strong> — done result 필수 항목화(바꾼 파일·실행한 확인·가정·미확인). 앱이 <code>RESULTS.md</code>에 자동 기록</p>
+          </article>
+          <article class="issue">
+            <div class="issue-label">[C] 에이전트 파일 충돌 가능성</div>
+            <p><strong>상황</strong> — 여러 자리가 동일 파일을 동시 수정할 경우 충돌 우려</p>
+            <p><strong>해결</strong> — 파일 샌드박스 + PM 배분 순서 조율 규범. 같은 파일을 두 자리가 동시 수정하지 않도록 강제</p>
+          </article>
+          <article class="issue">
+            <div class="issue-label">[D] AI 허위 사실 생성 (Hallucination)</div>
+            <p><strong>상황</strong> — 연구자·기획자가 자료 없이 수치·사례를 만들어낼 위험</p>
+            <p><strong>해결</strong> — 전 자리 공통 규범: 자료 없는 사실은 "[확인 필요: …]"로 표시, 임의로 채우지 않음</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= §6 CHANGELOG ======================= -->
+    <section id="changelog" class="section section-alt" aria-labelledby="changelog-title">
+      <div class="container container-narrow">
+        <h2 id="changelog-title" class="section-title">어떻게 발전했는가</h2>
+
+        <table class="changelog-table" aria-label="변경 이력">
+          <thead>
+            <tr>
+              <th scope="col">날짜</th>
+              <th scope="col">내용</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2026-10-14</td>
+              <td>관전형 추첨 게임 TF 운영 시작 — 자리·큐·플레이북 체계 초기 버전</td>
+            </tr>
+            <tr>
+              <td>2026-10-14</td>
+              <td>QA 헤드리스 시뮬레이션 도구(<code>simClassWinRate.js</code>) 도입</td>
+            </tr>
+            <tr>
+              <td>2026-10-14</td>
+              <td>작업 회수 이슈 발생</td>
+            </tr>
+            <tr>
+              <td>2026-10-23 이전</td>
+              <td><code>queue_withdraw</code> 도구 추가, PM 규범 업데이트</td>
+            </tr>
+            <tr>
+              <td>2026-10-23</td>
+              <td>자격증 문제풀기 웹앱 TF 출범</td>
+            </tr>
+            <tr>
+              <td>2026-10-23</td>
+              <td>포트폴리오 웹사이트 TF 출범 (현재)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="muted-note">
+          <em>[자료 없음]</em> 앱 최초 개발 시작일 · 정확한 버전 번호 · 총 커밋 수·작업 시간 — 사용자 확인 필요
+        </p>
+      </div>
+    </section>
+
+    <!-- ======================= §7 GALLERY ======================= -->
+    <section id="gallery" class="section" aria-labelledby="gallery-title">
+      <div class="container">
+        <h2 id="gallery-title" class="section-title">화면으로 보기</h2>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item" aria-label="Maestro 메인 화면 캡처 준비 중">
+            <div class="gallery-placeholder">
+              <span class="gallery-emoji" aria-hidden="true">🖥</span>
+              <strong>Maestro 메인 화면</strong>
+              <small>캡처 준비 중</small>
+            </div>
+          </figure>
+          <figure class="gallery-item" aria-label="작업 큐 화면 캡처 준비 중">
+            <div class="gallery-placeholder">
+              <span class="gallery-emoji" aria-hidden="true">📋</span>
+              <strong>작업 큐 화면</strong>
+              <small>캡처 준비 중</small>
+            </div>
+          </figure>
+          <figure class="gallery-item" aria-label="Ace 채팅 화면 캡처 준비 중">
+            <div class="gallery-placeholder">
+              <span class="gallery-emoji" aria-hidden="true">💬</span>
+              <strong>Ace 채팅 화면</strong>
+              <small>캡처 준비 중</small>
+            </div>
+          </figure>
+          <figure class="gallery-item" aria-label="팀 구성 화면 캡처 준비 중">
+            <div class="gallery-placeholder">
+              <span class="gallery-emoji" aria-hidden="true">👥</span>
+              <strong>팀 구성 화면</strong>
+              <small>캡처 준비 중</small>
+            </div>
+          </figure>
+          <figure class="gallery-item" aria-label="관전형 추첨 게임 실행 화면 캡처 준비 중">
+            <div class="gallery-placeholder">
+              <span class="gallery-emoji" aria-hidden="true">🎲</span>
+              <strong>관전형 추첨 게임</strong>
+              <small>캡처 준비 중</small>
+            </div>
+          </figure>
+          <figure class="gallery-item" aria-label="플레이북 화면 캡처 준비 중">
+            <div class="gallery-placeholder">
+              <span class="gallery-emoji" aria-hidden="true">📖</span>
+              <strong>플레이북 화면</strong>
+              <small>캡처 준비 중</small>
+            </div>
+          </figure>
+        </div>
+
+        <p class="gallery-caption">캡처 이미지 준비 중입니다.</p>
+      </div>
+    </section>
+
+    <!-- ======================= §8 CTA ======================= -->
+    <section id="contact" class="section section-cta" aria-labelledby="contact-title">
+      <div class="container container-narrow text-center">
+        <h2 id="contact-title" class="section-title">함께 일하고 싶으시면 연락 주세요</h2>
+        <p class="section-sub">
+          이 프로젝트가 흥미롭다면, 혹은 함께 만들고 싶은 게 있다면 편하게 연락 주세요.
+        </p>
+        <div class="cta-buttons">
+          <a class="btn btn-primary" href="#" target="_blank" rel="noopener noreferrer">GitHub →</a>
+          <a class="btn btn-ghost" href="mailto:your@email.com">이메일 보내기 →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================= FOOTER ======================= -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>Maestro 포트폴리오 · 2026</span>
+      <a class="footer-top-link" href="#hero">맨 위로 ↑</a>
+    </div>
+  </footer>
+
+  <script src="./main.js" defer></script>
+</body>
+</html>
