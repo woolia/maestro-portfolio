@@ -80,6 +80,9 @@ flowchart LR
   <img src="./assets/queue.jpg" width="49%" alt="전체 업무 칸반" />
   <img src="./assets/mini.jpg" width="49%" alt="미니 창" />
 </p>
+<p>
+  <img src="./assets/office-layout.jpg" width="100%" alt="사무실 탭 세 칸 — 사무실·대화 | 작업 폴더·검색 | 편집기" />
+</p>
 
 ## 사례
 
