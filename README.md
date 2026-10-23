@@ -5,12 +5,12 @@ Maestro: AI 에이전트 팀 오케스트레이터
 
 **지시는 한 번, 진행은 눈으로. 막히면 카드 하나로 풉니다.**
 
-![version](https://img.shields.io/badge/version-0.8.4-7C6FF0)
+![version](https://img.shields.io/badge/version-0.8.7-7C6FF0)
 ![platform](https://img.shields.io/badge/platform-Windows-0078D6?logo=windows&logoColor=white)
 ![electron](https://img.shields.io/badge/Electron-44-47848F?logo=electron&logoColor=white)
 ![react](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
-![typescript](https://img.shields.io/badge/TypeScript-2.2만_줄-3178C6?logo=typescript&logoColor=white)
-![tests](https://img.shields.io/badge/tests-257_passing-00D4AA)
+![typescript](https://img.shields.io/badge/TypeScript-2.3만_줄-3178C6?logo=typescript&logoColor=white)
+![tests](https://img.shields.io/badge/tests-261_passing-00D4AA)
 ![engine](https://img.shields.io/badge/engine-Claude_Code_·_Codex-D97757)
 
 **[포트폴리오 사이트](https://woolia.github.io/maestro-portfolio/)** · **[실제 사례](https://woolia.github.io/maestro-portfolio/#evidence)** · **[설계 결정](https://woolia.github.io/maestro-portfolio/#decisions)** · **[발전 과정](https://woolia.github.io/maestro-portfolio/#changelog)**
@@ -25,7 +25,7 @@ Maestro: AI 에이전트 팀 오케스트레이터
 
 AI 코딩 도구 하나에 큰 일을 맡기면 세 가지가 반복됩니다. 지시·코드·검증이 한 대화에 섞여 맥락이 무너지고, 결정이 채팅에만 남아 다음 세션에서 처음부터 다시 파악하고, 지금 일하는지·내 답을 기다리는지·멈췄는지 보이지 않습니다.
 
-Maestro 는 이걸 **역할 분리(자리) + 구조화 메시지(작업 큐) + 파일 격리(샌드박스) + 눈에 보이는 상태**로 풉니다. 19일 동안 47번 릴리스하며 매일 실제 업무를 맡겼고, 에이전트들이 처리한 작업은 281건입니다.
+Maestro 는 이걸 **역할 분리(자리) + 구조화 메시지(작업 큐) + 파일 격리(샌드박스) + 눈에 보이는 상태**로 풉니다. 19일 동안 50번 릴리스하며 매일 실제 업무를 맡겼고, 에이전트들이 처리한 작업은 281건입니다.
 
 > "지시하고 시키는 걸 웹에서 하고 싶은데… 각각 어떤 AI, 에이전트가 일하고 있고 쉬는지 그런 건 가능한가?"
 > — 2026-10-06, 처음 구상하며 던진 질문
@@ -68,7 +68,7 @@ flowchart LR
 | **관제** | 대시보드 · 타이쿤 사무실 · 미니 창(항상 위) · 구독 사용량(세션 5h·주간·모델별) | 대시보드 · 사무실 |
 | **즉시 멈춤** | 지금 턴을 바로 끊음(`interrupt`). 팀장 카드에서 맡긴 업무 중지 · 다시 진행 | 대화창 · 자리 카드 |
 | **운영** | 사용 한도·턴 한도 자동 재개, 재시작 후 이어쓰기, 자동 압축, 자체 업데이트·백업, 기억 폴더·작업 폴더 옮기기 | 설정 |
-| **코드 편집기** | 사무실 탭 세 칸(사무실·대화 \| 작업 폴더 \| 편집기), CodeMirror 탭 편집·Ctrl+S, 자동완성·스니펫, PDF·이미지·docx·xlsx 미리보기, 트리에서 새 파일·폴더·Java 클래스(package 자동)·복사·이름 바꾸기·삭제 | 사무실 · 파일 |
+| **코드 편집기** | 사무실 탭 세 칸(사무실·대화 \| 작업 폴더 \| 편집기), CodeMirror 탭 편집·Ctrl+S, 자동완성·스니펫, PDF·이미지·docx·xlsx 미리보기, 트리에서 새 파일 ▸(파일·Java 클래스·Java 패키지, package 자동)·복사·이름 바꾸기·삭제(메뉴 글자 단축키), Ctrl+Shift+F 작업 폴더 전체 찾기·바꾸기 | 사무실 · 파일 |
 | **언어 지원** | VS Code 확장처럼 언어별 설치 — TypeScript·Pyright·Eclipse JDT LS. 멤버 자동완성, F12 정의 이동, F2 이름 바꾸기, 타입·컴파일 오류 + 컨벤션(ESLint·Checkstyle·Ruff). 팀별 언어 버전(Python·ECMAScript·Java) | 설정 「확장」 · 팀 「언어 버전」 |
 | **Ctrl+K 인라인 AI** | Cursor 처럼 한 줄 지시 → 코드만 회색 미리보기 → Enter 적용 · Esc 버림. 줄을 고르면 그 줄만 | 편집기 |
 
@@ -133,5 +133,5 @@ flowchart LR
 
 ## 참고
 
-- 숫자(릴리스 47회 · 작업 281건 · 테스트 257개 · 코드 약 2.2만 줄)는 2026-10-24 기준 앱의 변경 기록·큐 데이터·테스트 결과에서 셌습니다.
+- 숫자(릴리스 50회 · 작업 281건 · 테스트 261개 · 코드 약 2.3만 줄)는 2026-10-24 기준 앱의 변경 기록·큐 데이터·테스트 결과에서 셌습니다.
 - 사이트의 "관전형 추첨 게임"·"자격증 문제풀기 웹앱" 사례는 다른 PC 에서 운영한 팀의 기록입니다.
