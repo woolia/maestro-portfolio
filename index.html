@@ -308,12 +308,14 @@
           실제로 이렇게 썼습니다
         </h2>
         <p class="section-sub">
-          사례 1 · 사내 매뉴얼 화면 교체 자동화 (2026-10-14 ~ 10-21)<br />
-          팀장 · Ace · 캡처 담당 5 · 보고서 담당 — 8개 자리, 작업 124건 중 119건 완료
+          사례 1 · <strong>화면 캡처·보고서 자동화 팀</strong> — 가장 많이 쓴 팀 (2026-10-14 ~ 10-21)<br />
+          사내 매뉴얼의 화면을 새 시스템 화면으로 바꾸는 일 · 팀장 · Ace · 캡처 담당 5 · 보고서 담당 — 8개 자리<br />
+          전체 작업 281건 중 <strong>124건(44%)</strong> · 완료 119 · 이관 5 · 한 번 이상 막혔다가 풀린 작업 73건
         </p>
 
         <div class="evidence-grid">
         <div class="evidence-flow">
+          <p class="case-stats">자리별 처리 — 캡처1 32 · 캡처2 26 · 캡처4 24 · 캡처3 14 · 캡처5 14 · Ace 12 (팀장은 배분·진행 관리)</p>
         <ol class="timeline" aria-label="매뉴얼 화면 교체 진행 흐름">
           <li class="timeline-item">
             <span class="timeline-dot" aria-hidden="true"></span>
@@ -359,7 +361,7 @@
 
         <div class="evidence-shots">
           <figure class="shot">
-            <a href="./assets/team.jpg" target="_blank" rel="noopener"><img src="./assets/team.jpg" alt="매뉴얼 화면 교체 팀 개요 — 팀장·Ace·캡처 담당 5·보고서 담당 8개 자리, 완료 119, 기억 58건, 팀 소식" loading="lazy" width="1400" height="849" /></a>
+            <a href="./assets/team.jpg" target="_blank" rel="noopener"><img src="./assets/team.jpg" alt="화면 캡처·보고서 자동화 팀 개요 — 팀장·Ace·캡처 담당 5·보고서 담당 8개 자리, 완료 119, 기억 58건, 팀 소식" loading="lazy" width="1400" height="849" /></a>
             <figcaption><strong>이 팀의 실제 화면</strong> 8개 자리 · 완료 119 · 기억 58건 · 파트별 완료 소식</figcaption>
           </figure>
           <figure class="shot">
@@ -491,42 +493,37 @@
             <p><strong>해결</strong> — 막힐 때 원인 이름을 붙이고 열린 원인을 먼저 조회. 같은 원인은 진행 중인 해결에 합류해 기다렸다가 함께 재개</p>
           </article>
           <article class="issue">
-            <div class="issue-label">[E] 앱 창이 테트리스로 바뀜</div>
-            <p><strong>상황</strong> — 개발 자리의 브라우저 검증 스크립트가 같은 디버그 포트를 잡아 Maestro 창에 자기 페이지를 띄움</p>
-            <p><strong>해결</strong> — 창 이동 가드 + 외부 페이지로 바뀌면 앱 화면으로 자동 복구, 샌드박스에서 원격 디버그 포트 사용 거부</p>
-          </article>
-          <article class="issue">
-            <div class="issue-label">[F] 세션이 바뀌면 맥락 유실</div>
+            <div class="issue-label">[E] 세션이 바뀌면 맥락 유실</div>
             <p><strong>상황</strong> — 작업마다 세션을 리셋하자 다음 작업에서 이전 결정을 다시 파악</p>
             <p><strong>해결</strong> — 결과 첫 두 줄 요약 + 전문은 앱이 <code>RESULTS.md</code> 에 기록, 기억(<code>memory.jsonl</code>)과 <code>memory_search</code></p>
           </article>
           <article class="issue">
-            <div class="issue-label">[G] 로그인 창이 빈 셸만</div>
+            <div class="issue-label">[F] 로그인 창이 빈 셸만</div>
             <p><strong>상황</strong> — 「로그인 창 열기」 가 아무 것도 안 하는 콘솔만 띄움</p>
             <p><strong>해결</strong> — 실행 경로에 공백과 <code>@</code> 가 함께 있으면 cmd 가 따옴표를 벗겨 실패. 명령을 .cmd 파일로 적어 실행</p>
           </article>
           <article class="issue">
-            <div class="issue-label">[H] AI 가 없는 사실을 채움</div>
+            <div class="issue-label">[G] AI 가 없는 사실을 채움</div>
             <p><strong>상황</strong> — 리서치·문서 자리가 자료에 없는 수치·사례를 만들어 낼 위험</p>
             <p><strong>해결</strong> — 공통 규범: 자료에 없는 사실은 <code>[확인 필요: …]</code> 로 비워 두고 결과에 모아 적음. 한 일은 "됐다" 대신 "무엇을 실행해 무엇을 봤다"</p>
           </article>
           <article class="issue">
-            <div class="issue-label">[I] JS 검사가 앱에서만 안 돎</div>
+            <div class="issue-label">[H] JS 검사가 앱에서만 안 돎</div>
             <p><strong>상황</strong> — ESLint 경고가 Node 실측에선 나오는데 앱 편집기엔 하나도 안 뜸. 사용자 캡처(같은 이름 두 번 선언)로 발견</p>
             <p><strong>해결</strong> — 화면 보안 정책(CSP)이 문자열 코드 생성을 막아 ESLint 의 규칙 검사(ajv)가 실패. <code>--disallow-code-generation-from-strings</code> 로 재현 후 ESLint 를 앱 본체(main)로 옮김 — CSP 는 풀지 않음</p>
           </article>
           <article class="issue">
-            <div class="issue-label">[J] Python 설정 파일을 무시</div>
+            <div class="issue-label">[I] Python 설정 파일을 무시</div>
             <p><strong>상황</strong> — <code>pythonVersion</code>·<code>typeCheckingMode</code> 를 적어도 Pyright 가 반영하지 않음</p>
             <p><strong>해결</strong> — 편집기 LSP 클라이언트가 <code>workspaceFolders</code> 를 안 보내면 Pyright 는 설정 파일을 읽지 않음(실측). 나가는 initialize 에 끼워 넣음</p>
           </article>
           <article class="issue">
-            <div class="issue-label">[K] 문서는 Java 21, 실물은 25</div>
+            <div class="issue-label">[J] 문서는 Java 21, 실물은 25</div>
             <p><strong>상황</strong> — jdtls 최신판이 종료 코드 13 으로 바로 죽음. README 는 "Java 21 이상"</p>
             <p><strong>해결</strong> — 버전별 묶음의 플러그인 MANIFEST(<code>osgi.ee</code>)를 비교해 1.62 부터 Java 25 필요를 확인, 21 로 도는 마지막 판 1.61 로 고정</p>
           </article>
           <article class="issue">
-            <div class="issue-label">[L] 오류가 편집기에 안 붙음</div>
+            <div class="issue-label">[K] 오류가 편집기에 안 붙음</div>
             <p><strong>상황</strong> — 언어 서버는 진단을 보내는데 밑줄이 안 그려짐</p>
             <p><strong>해결</strong> — 서버마다 파일 주소 표기가 다름(<code>file:///c%3A/</code> vs <code>file:///C:/</code>)을 글자 비교가 못 맞춤. 오가는 메시지의 드라이브 표기를 하나로 통일</p>
           </article>
