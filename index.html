@@ -64,10 +64,10 @@
             작업 큐, 파일 샌드박스, 플레이북, 기억을 직접 설계·구현하고 매일 실무에 쓰고 있습니다.
           </p>
           <ul class="stat-row" aria-label="주요 수치">
-            <li><strong>18일</strong><span>첫 구상 → 0.6.0</span></li>
-            <li><strong>37회</strong><span>릴리스</span></li>
+            <li><strong>19일</strong><span>첫 구상 → 0.8.4</span></li>
+            <li><strong>47회</strong><span>릴리스</span></li>
             <li><strong>281건</strong><span>에이전트가 처리한 작업</span></li>
-            <li><strong>227개</strong><span>단위 테스트</span></li>
+            <li><strong>257개</strong><span>단위 테스트</span></li>
           </ul>
           <div class="hero-cta">
             <a class="btn btn-primary" href="#evidence">실 사용 사례 보기 →</a>
@@ -157,7 +157,7 @@
           AI 팀 운영에 필요한 모든 것을 직접 설계했습니다
         </h2>
         <p class="section-sub">
-          Electron + React + TypeScript · 소스 약 1.9만 줄 · 설치된 Claude Code(구독 로그인)를 자식 프로세스로 띄우고,
+          Electron + React + TypeScript · 소스 약 2.2만 줄 · 설치된 Claude Code(구독 로그인)를 자식 프로세스로 띄우고,
           앱이 띄운 MCP 서버가 큐·권한·알림 도구를 줍니다. Codex 엔진도 같은 자리에 꽂을 수 있습니다.
         </p>
 
@@ -254,6 +254,46 @@
             </p>
             <p class="card-meta">
               구독 사용량(세션 5h · 주간 · 모델별) · 항상 위에 뜨는 미니 창 · Windows 토스트 → 해당 카드로 이동
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">🧑‍💻</span>
+            <h3 class="card-title">코드 편집기</h3>
+            <p class="card-sub">에이전트가 만든 결과를 그 자리에서 고친다</p>
+            <p class="card-desc">
+              사무실 탭을 [사무실 + 대화 | 작업 폴더 | 편집기] 세 칸으로 나누고, 경계를 끌어 크기를 조절합니다.
+              편집기는 CodeMirror 6 — 탭, 언어별 색칠, Ctrl+S 저장, 자동완성·스니펫(<code>psvm</code>·<code>sout</code>·<code>def</code>…)과
+              VS Code 식 단축키. PDF(pdf.js)·이미지·docx·xlsx 는 미리보기.
+            </p>
+            <p class="card-meta">
+              트리: 새 파일·폴더·Java 클래스(package 자동) · 복사·붙여넣기 · 이름 바꾸기 · 휴지통 삭제 · 경로 복사
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">🧩</span>
+            <h3 class="card-title">언어 지원 · 언어 버전</h3>
+            <p class="card-sub">IntelliJ 처럼 오류를 미리</p>
+            <p class="card-desc">
+              VS Code 확장처럼 쓰는 언어만 내려받아(체크섬 확인) 언어 서버를 붙입니다 — TypeScript · Pyright · Eclipse JDT LS.
+              클래스 멤버 자동완성, F12 정의 이동, F2 이름 바꾸기, 타입·컴파일 오류. 컨벤션은 ESLint · Checkstyle · Ruff.
+            </p>
+            <p class="card-meta">
+              팀마다 「언어 버전」(Python 3.x · ES5~ · Java 1.8~) — 예: 3.8 이면 <code>match</code> 문 오류, ES5 면 <code>let</code> 오류
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="card-icon" aria-hidden="true">✨</span>
+            <h3 class="card-title">Ctrl+K 인라인 AI</h3>
+            <p class="card-sub">Cursor 처럼 한 줄 지시 → 회색 미리보기</p>
+            <p class="card-desc">
+              편집기에서 Ctrl+K 로 한 줄 입력창을 띄워 "TDD 로 add 함수" 처럼 지시합니다. 줄을 골라 두면 그 줄만 고칩니다.
+              응답은 설명 없이 코드만 회색으로 보이고, Enter 로 적용·Esc 로 버립니다.
+            </p>
+            <p class="card-meta">
+              팀장 자리의 엔진(Claude·Codex)을 페르소나·도구 없이 한 번 호출 — 실측 약 5초, 입력 288토큰
             </p>
           </article>
 
@@ -470,6 +510,26 @@
             <p><strong>상황</strong> — 리서치·문서 자리가 자료에 없는 수치·사례를 만들어 낼 위험</p>
             <p><strong>해결</strong> — 공통 규범: 자료에 없는 사실은 <code>[확인 필요: …]</code> 로 비워 두고 결과에 모아 적음. 한 일은 "됐다" 대신 "무엇을 실행해 무엇을 봤다"</p>
           </article>
+          <article class="issue">
+            <div class="issue-label">[I] JS 검사가 앱에서만 안 돎</div>
+            <p><strong>상황</strong> — ESLint 경고가 Node 실측에선 나오는데 앱 편집기엔 하나도 안 뜸. 사용자 캡처(같은 이름 두 번 선언)로 발견</p>
+            <p><strong>해결</strong> — 화면 보안 정책(CSP)이 문자열 코드 생성을 막아 ESLint 의 규칙 검사(ajv)가 실패. <code>--disallow-code-generation-from-strings</code> 로 재현 후 ESLint 를 앱 본체(main)로 옮김 — CSP 는 풀지 않음</p>
+          </article>
+          <article class="issue">
+            <div class="issue-label">[J] Python 설정 파일을 무시</div>
+            <p><strong>상황</strong> — <code>pythonVersion</code>·<code>typeCheckingMode</code> 를 적어도 Pyright 가 반영하지 않음</p>
+            <p><strong>해결</strong> — 편집기 LSP 클라이언트가 <code>workspaceFolders</code> 를 안 보내면 Pyright 는 설정 파일을 읽지 않음(실측). 나가는 initialize 에 끼워 넣음</p>
+          </article>
+          <article class="issue">
+            <div class="issue-label">[K] 문서는 Java 21, 실물은 25</div>
+            <p><strong>상황</strong> — jdtls 최신판이 종료 코드 13 으로 바로 죽음. README 는 "Java 21 이상"</p>
+            <p><strong>해결</strong> — 버전별 묶음의 플러그인 MANIFEST(<code>osgi.ee</code>)를 비교해 1.62 부터 Java 25 필요를 확인, 21 로 도는 마지막 판 1.61 로 고정</p>
+          </article>
+          <article class="issue">
+            <div class="issue-label">[L] 오류가 편집기에 안 붙음</div>
+            <p><strong>상황</strong> — 언어 서버는 진단을 보내는데 밑줄이 안 그려짐</p>
+            <p><strong>해결</strong> — 서버마다 파일 주소 표기가 다름(<code>file:///c%3A/</code> vs <code>file:///C:/</code>)을 글자 비교가 못 맞춤. 오가는 메시지의 드라이브 표기를 하나로 통일</p>
+          </article>
         </div>
       </div>
     </section>
@@ -503,11 +563,13 @@
             <tr><td>10-20</td><td>0.5.17 ~ 0.5.24</td><td>즉시 멈춤·작업 회수, 구독 사용량(세션·주간·모델별), 기억 검색 범위, 기억 폴더(설치 때 선택)</td></tr>
             <tr><td>10-21</td><td>0.5.25 ~ 0.5.27</td><td>MCP 토큰 절감(작업자 도구 8 → 3), 미니 창</td></tr>
             <tr><td>10-23</td><td>0.5.28 ~ 0.6.0</td><td>작업 폴더 옮기기, 채팅에 이미지 붙여넣기, 0.6.0 으로 정리</td></tr>
+            <tr><td>10-24</td><td>0.7.0 ~ 0.7.4</td><td>사무실 탭을 세 칸(사무실·대화 | 작업 폴더 | 편집기)으로, 경계 끌어 크기 조절. 코드 편집기(CodeMirror)·PDF 미리보기, 트리 편집, 컨벤션 검사(ESLint·Checkstyle·Ruff), 자동완성·스니펫, Ctrl+K 인라인 AI</td></tr>
+            <tr><td>10-24</td><td>0.8.0 ~ 0.8.4</td><td>언어 지원 확장(TypeScript·Pyright·jdtls, 쓰는 언어만 설치), 팀별 언어 버전, 새 Java 클래스(package 자동), JS 검사를 main 으로(CSP)</td></tr>
           </tbody>
         </table>
 
         <p class="muted-note">
-          코드 약 1.9만 줄(TypeScript 138 파일) · 단위 테스트 44 파일 227개 · 큐 작업 281건(완료 274 · 실패 2 · 이관 5).
+          코드 약 2.2만 줄(TypeScript 162 파일) · 단위 테스트 51 파일 257개 · 큐 작업 281건(완료 274 · 실패 2 · 이관 5).
           금액은 Claude Code 가 계산한 API 환산 추정치이며 실제 청구액이 아닙니다(구독 사용).
         </p>
       </div>
