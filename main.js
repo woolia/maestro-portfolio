@@ -1,5 +1,6 @@
 // Maestro 포트폴리오 — 인터랙션
 // 1) 헤더 스크롤 상태 토글  2) 햄버거 메뉴 토글  3) 네비 active 하이라이트
+// 4) 시연 영상 장면 이동 — 장면을 누르면 그 지점부터 재생
 
 (function () {
   'use strict';
@@ -84,6 +85,41 @@
 
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
+
+  /* 4. 시연 영상 — 장면 버튼으로 그 지점부터 재생 */
+  const video = document.getElementById('tour-video');
+  const chapters = Array.from(document.querySelectorAll('.chapter'));
+
+  if (video && chapters.length > 0) {
+    chapters.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const t = parseFloat(btn.getAttribute('data-t'));
+        if (Number.isNaN(t)) return;
+        video.currentTime = t;
+        // 재생 거부(자동재생 정책)는 무시한다 — 사용자가 컨트롤로 누르면 된다
+        const played = video.play();
+        if (played && typeof played.catch === 'function') { played.catch(function () {}); }
+      });
+    });
+
+    // 재생 위치에 해당하는 장면을 표시한다
+    const starts = chapters.map(function (btn) {
+      return parseFloat(btn.getAttribute('data-t')) || 0;
+    });
+
+    function highlightChapter() {
+      let current = -1;
+      for (let i = 0; i < starts.length; i++) {
+        if (video.currentTime >= starts[i]) current = i;
+      }
+      chapters.forEach(function (btn, i) {
+        btn.classList.toggle('is-playing', i === current);
+      });
+    }
+
+    video.addEventListener('timeupdate', highlightChapter);
+    video.addEventListener('seeked', highlightChapter);
+  }
 
   // 초기 상태 반영
   updateHeaderOnScroll();

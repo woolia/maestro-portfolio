@@ -41,6 +41,7 @@
           <li><a class="nav-link" href="#hero">Home</a></li>
           <li><a class="nav-link" href="#problem">Problem</a></li>
           <li><a class="nav-link" href="#maestro">Maestro</a></li>
+          <li><a class="nav-link" href="#demo">Demo</a></li>
           <li><a class="nav-link" href="#evidence">Evidence</a></li>
           <li><a class="nav-link" href="#decisions">Decisions</a></li>
           <li><a class="nav-link" href="#changelog">Changelog</a></li>
@@ -301,7 +302,60 @@
     </section>
 
     <!-- ======================= §4 LIVE EVIDENCE ======================= -->
-    <section id="evidence" class="section section-alt" aria-labelledby="evidence-title">
+    <!-- ======================= §4 DEMO ======================= -->
+    <section id="demo" class="section section-alt" aria-labelledby="demo-title">
+      <div class="container">
+        <h2 id="demo-title" class="section-title">움직이는 화면</h2>
+        <p class="section-sub">
+          실제로 돌아가는 조직을 한 바퀴 돕니다 — 관제실에서 시작해, 완료 119건이 쌓인 팀의
+          업무·파일·간트·자리까지. 57초, 소리 없음, 자막 있음.
+        </p>
+
+        <div class="demo-layout">
+          <figure class="demo-media shot">
+            <video
+              id="tour-video"
+              controls
+              preload="metadata"
+              playsinline
+              poster="./assets/tour-poster.jpg"
+              width="1280"
+              height="692"
+            >
+              <source src="./assets/tour.mp4" type="video/mp4" />
+              <track kind="captions" src="./assets/tour.vtt" srclang="ko" label="한국어" />
+              이 브라우저는 영상 재생을 지원하지 않습니다.
+              <a href="./assets/tour.mp4">영상 내려받기</a>
+            </video>
+            <figcaption>
+              <strong>조직 한 바퀴</strong>
+              화면 캡처는 PrintWindow 로 창을 직접 떠서 만들었습니다. 자막은 영상에 넣어 두었고,
+              같은 내용을 <code>tour.vtt</code> 로도 함께 넣어 읽을 수 있게 했습니다.
+            </figcaption>
+          </figure>
+
+          <div class="demo-chapters">
+            <h3 class="demo-chapters-title">장면</h3>
+            <ol class="chapter-list" id="chapter-list">
+              <li><button type="button" class="chapter" data-t="0">   <span class="chapter-time">0:00</span> <span class="chapter-name">대시보드</span>    <span class="chapter-desc">팀 넷의 진행·비용·구독 사용량</span></button></li>
+              <li><button type="button" class="chapter" data-t="6">   <span class="chapter-time">0:06</span> <span class="chapter-name">비서 수신함</span> <span class="chapter-desc">한 문장으로 팀을 만들고 지시</span></button></li>
+              <li><button type="button" class="chapter" data-t="10">  <span class="chapter-time">0:10</span> <span class="chapter-name">에이전트</span>    <span class="chapter-desc">역할 21종을 모든 팀이 공유</span></button></li>
+              <li><button type="button" class="chapter" data-t="14">  <span class="chapter-time">0:14</span> <span class="chapter-name">팀 개요</span>     <span class="chapter-desc">자리 8개 · 완료 119건 · $56.55</span></button></li>
+              <li><button type="button" class="chapter" data-t="18">  <span class="chapter-time">0:18</span> <span class="chapter-name">사무실</span>      <span class="chapter-desc">캐릭터를 누르면 그 자리와 대화</span></button></li>
+              <li><button type="button" class="chapter" data-t="35">  <span class="chapter-time">0:35</span> <span class="chapter-name">업무</span>        <span class="chapter-desc">대기·진행·막힘·종결 칸반</span></button></li>
+              <li><button type="button" class="chapter" data-t="37">  <span class="chapter-time">0:37</span> <span class="chapter-name">파일</span>        <span class="chapter-desc">작업 폴더와 플레이북을 앱 안에서</span></button></li>
+              <li><button type="button" class="chapter" data-t="48">  <span class="chapter-time">0:48</span> <span class="chapter-name">간트</span>        <span class="chapter-desc">작업 일정을 시간축으로</span></button></li>
+              <li><button type="button" class="chapter" data-t="52">  <span class="chapter-time">0:52</span> <span class="chapter-name">자리</span>        <span class="chapter-desc">역할·모델·턴 수·비용</span></button></li>
+              <li><button type="button" class="chapter" data-t="55">  <span class="chapter-time">0:55</span> <span class="chapter-name">언어 버전</span>   <span class="chapter-desc">Python·JavaScript·Java 실행 환경</span></button></li>
+            </ol>
+            <p class="demo-note">장면을 누르면 그 지점부터 재생됩니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= §5 EVIDENCE ======================= -->
+    <section id="evidence" class="section" aria-labelledby="evidence-title">
       <div class="container">
         <h2 id="evidence-title" class="section-title">
           실제로 이렇게 썼습니다
@@ -405,7 +459,7 @@
     </section>
 
     <!-- ======================= §5 DESIGN DECISIONS ======================= -->
-    <section id="decisions" class="section" aria-labelledby="decisions-title">
+    <section id="decisions" class="section section-alt" aria-labelledby="decisions-title">
       <div class="container">
         <h2 id="decisions-title" class="section-title">
           왜 프레임워크를 안 쓰고 직접 만들었는가
@@ -531,7 +585,7 @@
     </section>
 
     <!-- ======================= §6 CHANGELOG ======================= -->
-    <section id="changelog" class="section section-alt" aria-labelledby="changelog-title">
+    <section id="changelog" class="section" aria-labelledby="changelog-title">
       <div class="container container-narrow">
         <h2 id="changelog-title" class="section-title">어떻게 발전했는가</h2>
         <p class="section-sub">
@@ -572,7 +626,7 @@
     </section>
 
     <!-- ======================= §7 GALLERY ======================= -->
-    <section id="gallery" class="section" aria-labelledby="gallery-title">
+    <section id="gallery" class="section section-alt" aria-labelledby="gallery-title">
       <div class="container">
         <h2 id="gallery-title" class="section-title">화면으로 보기</h2>
 
